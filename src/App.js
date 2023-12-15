@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  const [arr, setArr] = useState([1]);
+
+  const push = () => {
+    let randomNumber = (Math.floor(Math.random() * 1000) + 1);
+    setArr([...arr, randomNumber]);
+  }
+
+  return(
+    <>
+    <button onClick={push}>Додати число</button>
+    <ul>
+      {arr.map((item, idx) => <li key={idx}>{item}</li>)}
+    </ul>
+    </>
   );
 }
 
